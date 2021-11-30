@@ -4,12 +4,12 @@
 
 export const MOCK_PORT = 9999;
 export const url = process.env.TEST_LIVE
-  ? 'http://localhost:8899/'
-  : 'http://localhost:9999/';
+  ? 'http://127.0.0.1:8899/'
+  : 'http://127.0.0.1:9999/';
 
 export const wsUrl = process.env.TEST_LIVE
-  ? 'ws://localhost:8900/'
-  : 'ws://localhost:9999/';
+  ? 'ws://127.0.0.1:8900/'
+  : 'ws://127.0.0.1:9999/';
 
 //export const url = 'https://api.devnet.solana.com/';
 //export const url = 'http://api.devnet.solana.com/';

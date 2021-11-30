@@ -1,9 +1,9 @@
 import bs58 from 'bs58';
 import BN from 'bn.js';
 import * as mockttp from 'mockttp';
+import {Connection, PublicKey, Transaction, Signer} from '@solana/web3.js';
 
 import {mockRpcMessage} from './rpc-websockets';
-import {Connection, PublicKey, Transaction, Signer} from '../../src';
 import invariant from '../../src/util/assert';
 import type {Commitment, HttpHeaders, RpcParams} from '../../src/connection';
 

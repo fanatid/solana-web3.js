@@ -1,6 +1,6 @@
 {
-  "name": "@solana/web3.js",
-  "version": "0.0.0-development",
+  "name": "@project-serum/web3.js-bpf-upgradeable",
+  "version": "1.35.0",
   "description": "Solana Javascript API",
   "keywords": [
     "api",
@@ -38,6 +38,7 @@
   ],
   "scripts": {
     "build": "npm run clean; cross-env NODE_ENV=production rollup -c; npm run type:gen; npm run flow:gen; npm run flow:check",
+    "build2": "npm run clean; cross-env NODE_ENV=production rollup -c; npm run type:gen",
     "build:fixtures": "set -ex; ./test/fixtures/noop-program/build.sh",
     "clean": "rimraf ./coverage ./lib",
     "codecov": "set -ex; npm run test:cover; cat ./coverage/lcov.info | codecov",
@@ -52,15 +53,16 @@
     "pretty": "prettier --check '{,{src,test}/**/}*.{j,t}s'",
     "pretty:fix": "prettier --write '{,{src,test}/**/}*.{j,t}s'",
     "re": "semantic-release --repository-url git@github.com:solana-labs/solana-web3.js.git",
-    "test": "mocha -r ts-node/register './test/**/*.test.ts'",
-    "test:cover": "TS_NODE_COMPILER_OPTIONS='{\"module\": \"commonjs\" }' nyc --reporter=lcov mocha -r ts-node/register './test/**/*.test.ts'",
+    "test": "mocha -r ts-node/register './test/bpf-loader-upgradeable.test.ts'",
+    "test:cover": "TS_NODE_COMPILER_OPTIONS='{\"module\": \"commonjs\" }' nyc --reporter=lcov mocha -r ts-node/register './test/bpf-loader-upgradeable.test.ts'",
     "test:live": "TEST_LIVE=1 npm run test",
-    "test:live-with-test-validator": "start-server-and-test 'solana-test-validator --reset --quiet' http://localhost:8899/health test:live"
+    "test:live-with-test-validator": "start-server-and-test 'solana-test-validator --reset --quiet' http://127.0.0.1:8899/health test:live"
   },
   "dependencies": {
     "@babel/runtime": "^7.12.5",
     "@ethersproject/sha2": "^5.5.0",
     "@solana/buffer-layout": "^3.0.0",
+    "@solana/web3.js": "^1.35.0",
     "bn.js": "^5.0.0",
     "borsh": "^0.4.0",
     "bs58": "^4.0.1",

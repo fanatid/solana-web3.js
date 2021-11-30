@@ -1,13 +1,9 @@
 import fs from 'mz/fs';
 import {expect, use} from 'chai';
 import chaiAsPromised from 'chai-as-promised';
+import {Connection, Keypair} from '@solana/web3.js';
 
-import {
-  Connection,
-  BpfLoaderUpgradeable,
-  Keypair,
-  BpfLoaderUpgradeableProgram,
-} from '../src';
+import {BpfLoaderUpgradeable, BpfLoaderUpgradeableProgram} from '../src';
 import {url} from './url';
 import {helpers} from './mocks/rpc-http';
 

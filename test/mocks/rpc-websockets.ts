@@ -1,8 +1,7 @@
 import {Client as LiveClient} from 'rpc-websockets';
 import {expect} from 'chai';
 import {createSandbox} from 'sinon';
-
-import {Connection} from '../../src';
+import {Connection} from '@solana/web3.js';
 
 type RpcRequest = {
   method: string;
@@ -38,6 +37,7 @@ export const mockRpcMessage = ({
 };
 
 export const stubRpcWebSocket = (connection: Connection) => {
+  // @ts-expect-error
   const rpcWebSocket = connection._rpcWebSocket;
   const mockClient = new MockClient(rpcWebSocket);
   sandbox.stub(rpcWebSocket, 'connect').callsFake(() => {
@@ -54,9 +54,13 @@ export const stubRpcWebSocket = (connection: Connection) => {
 };
 
 export const restoreRpcWebSocket = (connection: Connection) => {
+  // @ts-expect-error
   connection._rpcWebSocket.close();
+  // @ts-expect-error
   if (connection._rpcWebSocketIdleTimeout !== null) {
+    // @ts-expect-error
     clearTimeout(connection._rpcWebSocketIdleTimeout);
+    // @ts-expect-error
     connection._rpcWebSocketIdleTimeout = null;
   }
   sandbox.restore();

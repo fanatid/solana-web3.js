@@ -1,18 +1,19 @@
 import * as BufferLayout from '@solana/buffer-layout';
+import {
+  PACKET_DATA_SIZE,
+  PublicKey,
+  SYSVAR_CLOCK_PUBKEY,
+  SYSVAR_RENT_PUBKEY,
+  SystemProgram,
+  Transaction,
+  TransactionInstruction,
+  sendAndConfirmTransaction,
+  Connection,
+  Signer,
+} from '@solana/web3.js';
 
 import {encodeData, InstructionType} from './instruction';
 import * as Layout from './layout';
-import {PublicKey} from './publickey';
-import {SystemProgram} from './system-program';
-import {SYSVAR_CLOCK_PUBKEY, SYSVAR_RENT_PUBKEY} from './sysvar';
-import {
-  Transaction,
-  TransactionInstruction,
-  PACKET_DATA_SIZE,
-} from './transaction';
-import {sendAndConfirmTransaction} from './util/send-and-confirm-transaction';
-import type {Connection} from './connection';
-import type {Signer} from './keypair';
 
 export const BPF_LOADER_UPGRADEABLE_PROGRAM_ID = new PublicKey(
   'BPFLoaderUpgradeab1e11111111111111111111111',
