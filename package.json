@@ -1,7 +1,7 @@
 {
   "name": "@project-serum/web3.js-bpf-upgradeable",
-  "version": "1.35.0",
-  "description": "Solana Javascript API",
+  "version": "0.1.0",
+  "description": "BPF Upgradeable Solana Javascript API",
   "keywords": [
     "api",
     "blockchain"
@@ -11,10 +11,10 @@
   "homepage": "https://solana.com/",
   "repository": {
     "type": "git",
-    "url": "https://github.com/solana-labs/solana-web3.js.git"
+    "url": "https://github.com/project-serum/web3.js-bpf-upgradeable.git"
   },
   "bugs": {
-    "url": "http://github.com/solana-labs/solana-web3.js.git/issues"
+    "url": "http://github.com/project-serum/web3.js-bpf-upgradeable.git/issues"
   },
   "publishConfig": {
     "access": "public"
@@ -33,47 +33,32 @@
   ],
   "files": [
     "/lib",
-    "/module.flow.js",
     "/src"
   ],
   "scripts": {
-    "build": "npm run clean; cross-env NODE_ENV=production rollup -c; npm run type:gen; npm run flow:gen; npm run flow:check",
-    "build2": "npm run clean; cross-env NODE_ENV=production rollup -c; npm run type:gen",
-    "build:fixtures": "set -ex; ./test/fixtures/noop-program/build.sh",
-    "clean": "rimraf ./coverage ./lib",
+    "build": "npm run clean; cross-env NODE_ENV=production rollup -c; npm run type:gen",
+    "clean": "rimraf ./coverage ./declarations ./lib",
     "codecov": "set -ex; npm run test:cover; cat ./coverage/lcov.info | codecov",
     "dev": "cross-env NODE_ENV=development rollup -c",
     "doc": "set -ex; typedoc --treatWarningsAsErrors",
-    "flow:check": "flow check-contents < module.flow.js",
-    "flow:gen": "flowgen lib/index.d.ts -o module.flow.js",
     "type:gen": "./scripts/typegen.sh",
     "lint": "set -ex; npm run pretty; eslint . --ext .js,.ts",
     "lint:fix": "npm run pretty:fix && eslint . --fix --ext .js,.ts",
     "ok": "run-s lint test doc",
     "pretty": "prettier --check '{,{src,test}/**/}*.{j,t}s'",
     "pretty:fix": "prettier --write '{,{src,test}/**/}*.{j,t}s'",
-    "re": "semantic-release --repository-url git@github.com:solana-labs/solana-web3.js.git",
-    "test": "mocha -r ts-node/register './test/bpf-loader-upgradeable.test.ts'",
-    "test:cover": "TS_NODE_COMPILER_OPTIONS='{\"module\": \"commonjs\" }' nyc --reporter=lcov mocha -r ts-node/register './test/bpf-loader-upgradeable.test.ts'",
+    "test": "mocha -r ts-node/register './test/index.test.ts'",
+    "test:cover": "TS_NODE_COMPILER_OPTIONS='{\"module\": \"commonjs\" }' nyc --reporter=lcov mocha -r ts-node/register './test/index.test.ts'",
     "test:live": "TEST_LIVE=1 npm run test",
     "test:live-with-test-validator": "start-server-and-test 'solana-test-validator --reset --quiet' http://127.0.0.1:8899/health test:live"
   },
   "dependencies": {
     "@babel/runtime": "^7.12.5",
-    "@ethersproject/sha2": "^5.5.0",
     "@solana/buffer-layout": "^3.0.0",
     "@solana/web3.js": "^1.35.0",
     "bn.js": "^5.0.0",
-    "borsh": "^0.4.0",
     "bs58": "^4.0.1",
-    "buffer": "6.0.1",
-    "cross-fetch": "^3.1.4",
-    "jayson": "^3.4.4",
-    "js-sha3": "^0.8.0",
-    "rpc-websockets": "^7.4.2",
-    "secp256k1": "^4.0.2",
-    "superstruct": "^0.14.2",
-    "tweetnacl": "^1.0.0"
+    "buffer": "6.0.1"
   },
   "devDependencies": {
     "@babel/core": "^7.12.13",
@@ -82,8 +67,6 @@
     "@babel/preset-env": "^7.12.11",
     "@babel/preset-typescript": "^7.12.16",
     "@babel/register": "^7.12.13",
-    "@commitlint/config-conventional": "^15.0.0",
-    "@commitlint/travis-cli": "^15.0.0",
     "@rollup/plugin-alias": "^3.1.2",
     "@rollup/plugin-babel": "^5.2.3",
     "@rollup/plugin-commonjs": "^21.0.0",
@@ -100,7 +83,6 @@
     "@types/mocha": "^9.0.0",
     "@types/mz": "^2.7.3",
     "@types/node": "^16.0.0",
-    "@types/secp256k1": "^4.0.1",
     "@types/sinon": "^10.0.0",
     "@typescript-eslint/eslint-plugin": "^4.14.2",
     "@typescript-eslint/parser": "^4.14.2",
@@ -114,8 +96,6 @@
     "eslint-plugin-mocha": "^9.0.0",
     "eslint-plugin-prettier": "^4.0.0",
     "esm": "^3.2.25",
-    "flow-bin": "^0.150.0",
-    "flowgen": "^1.13.0",
     "http-server": "^14.0.0",
     "mocha": "^8.2.1",
     "mockttp": "^2.0.1",
@@ -129,7 +109,6 @@
     "rollup-plugin-dts": "^4.0.0",
     "rollup-plugin-node-polyfills": "^0.2.1",
     "rollup-plugin-terser": "^7.0.2",
-    "semantic-release": "^18.0.0",
     "sinon": "^12.0.0",
     "start-server-and-test": "^1.12.0",
     "ts-node": "^10.0.0",

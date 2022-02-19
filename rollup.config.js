@@ -53,17 +53,9 @@ function generateConfig(configType, format) {
       '@solana/buffer-layout',
       '@solana/web3.js',
       'bn.js',
-      'borsh',
       'bs58',
       'buffer',
       'crypto-hash',
-      'jayson/lib/client/browser',
-      'js-sha3',
-      'cross-fetch',
-      'rpc-websockets',
-      'secp256k1',
-      'superstruct',
-      'tweetnacl',
     ];
   }
 
@@ -85,18 +77,11 @@ function generateConfig(configType, format) {
             '@solana/buffer-layout',
             '@solana/web3.js',
             'bn.js',
-            'borsh',
             'bs58',
             'buffer',
             'crypto-hash',
             'http',
             'https',
-            'jayson/lib/client/browser',
-            'js-sha3',
-            'rpc-websockets',
-            'secp256k1',
-            'superstruct',
-            'tweetnacl',
           ];
 
           break;
@@ -108,13 +93,13 @@ function generateConfig(configType, format) {
             {
               file: 'lib/index.iife.js',
               format: 'iife',
-              name: 'solanaWeb3',
+              name: 'solanaWeb3Bpf',
               sourcemap: true,
             },
             {
               file: 'lib/index.iife.min.js',
               format: 'iife',
-              name: 'solanaWeb3',
+              name: 'solanaWeb3Bpf',
               sourcemap: true,
               plugins: [terser({mangle: false, compress: false})],
             },

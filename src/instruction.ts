@@ -25,24 +25,3 @@ export function encodeData(type: InstructionType, fields?: any): Buffer {
   type.layout.encode(layoutFields, data);
   return data;
 }
-
-/**
- * Decode instruction data buffer using an InstructionType
- * @internal
- */
-export function decodeData(type: InstructionType, buffer: Buffer): any {
-  let data;
-  try {
-    data = type.layout.decode(buffer);
-  } catch (err) {
-    throw new Error('invalid instruction; ' + err);
-  }
-
-  if (data.instruction !== type.index) {
-    throw new Error(
-      `invalid instruction; instruction index mismatch ${data.instruction} != ${type.index}`,
-    );
-  }
-
-  return data;
-}

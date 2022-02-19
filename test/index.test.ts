@@ -5,7 +5,7 @@ import {Connection, Keypair} from '@solana/web3.js';
 
 import {BpfLoaderUpgradeable, BpfLoaderUpgradeableProgram} from '../src';
 import {url} from './url';
-import {helpers} from './mocks/rpc-http';
+import {airdrop} from './mocks/rpc-http';
 
 use(chaiAsPromised);
 
@@ -52,7 +52,7 @@ if (process.env.TEST_LIVE) {
       const bufferAccountBalance =
         await connection.getMinimumBalanceForRentExemption(bufferAccountSize);
 
-      await helpers.airdrop({
+      await airdrop({
         connection,
         address: payerAccount.publicKey,
         amount: payerBalance + bufferAccountBalance + fees,
@@ -152,7 +152,7 @@ if (process.env.TEST_LIVE) {
           programDataAccountSize,
         );
 
-      await helpers.airdrop({
+      await airdrop({
         connection,
         address: payerAccount.publicKey,
         amount:

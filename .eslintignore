@@ -4,9 +4,5 @@
 /deploy
 /doc
 /lib
-/module.flow.js
 /.eslintrc.js
-/test/.eslintrc.js
-/test/dist
-/test/rollup.config.js
 /rollup.config.js

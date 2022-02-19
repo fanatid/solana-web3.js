@@ -25,10 +25,10 @@ script:
 before_deploy:
   - rm -rf deploy
   - mkdir -p deploy
-  - cp -r doc deploy/solanaWeb3Api-$TRAVIS_BRANCH
+  - cp -r doc deploy/solanaWeb3BpfApi-$TRAVIS_BRANCH
   - ls -l lib
-  - cp lib/index.iife.js deploy/solanaWeb3.min.js
-  - ( cd deploy; tar zcf solanaWeb3Api.tgz solanaWeb3Api-$TRAVIS_BRANCH )
+  - cp lib/index.iife.js deploy/solanaWeb3Bpf.min.js
+  - ( cd deploy; tar zcf solanaWeb3BpfApi.tgz solanaWeb3BpfApi-$TRAVIS_BRANCH )
 
 deploy:
   - provider: pages
@@ -50,8 +50,8 @@ deploy:
   - provider: releases
     skip-cleanup: true
     file:
-      - deploy/solanaWeb3.min.js
-      - deploy/solanaWeb3Api.tgz
+      - deploy/solanaWeb3Bpf.min.js
+      - deploy/solanaWeb3BpfApi.tgz
     api_key: $GITHUB_TOKEN
     on:
       tags: true
